@@ -1,10 +1,3 @@
-"""
-Created on Mon Nov 28 01:04:35 2022
-
-@author: sachin kelkar
-"""
-
-
 def multiss(Ind):
 
     """
