@@ -42,7 +42,7 @@ def multiss(Ind):
 
     # define an empty cost matrix
     A = np.zeros((nstars, nstars))
-    coeff = np.array([100, -200, -300, -np.e, -np.pi])
+    coeff = np.array([1222, -21, -32, -np.e, -np.pi])
     cn = coeff / np.linalg.norm(coeff)
 
     # generate a keepout map
@@ -102,8 +102,7 @@ def multiss(Ind):
                 ) * np.prod(
                     koMap[
                         steps[1],
-                        tc.item()
-                        + intime.item(steps[0]) : intime.item(steps[1]),
+                        tc.item() + intime.item(steps[0]) : intime.item(steps[1]),
                     ]
                 )
 
@@ -162,8 +161,7 @@ def multiss(Ind):
                 ) * np.prod(
                     koMap[
                         step[1],
-                        tc.item()
-                        + intime.item(step[0]) : intime.item(step[1]),
+                        tc.item() + intime.item(step[0]) : intime.item(step[1]),
                     ]
                 )
 
@@ -174,9 +172,7 @@ def multiss(Ind):
                     T = np.append(T, step)
                     # adding integration time to current time
                     tc = tc + intime[step[0]] + intime[step[1]]
-                    revisit_tab = revisit_fun(
-                        revisit_tab, step[0], step[1], len(sInds)
-                    )
+                    revisit_tab = revisit_fun(revisit_tab, step[0], step[1], len(sInds))
                 ko2 = 0
                 print(tc)
 
