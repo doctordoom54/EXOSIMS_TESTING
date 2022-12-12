@@ -1,14 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Dec 11 23:16:05 2022
-
-@author: sachin kelkar
-"""
-
 class test(object):
-    
-   
-    
     def __init__(self,a,b):
         
         self.a = a
@@ -18,8 +8,6 @@ class test(object):
         e = self.a+self.b
         return e
     
-
-
 class test2(test):
     
     def __init__(self,f,a,b):
