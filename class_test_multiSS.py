@@ -1,4 +1,5 @@
 class multiSS:
+    
     def __init__(self, Ind):
         self.Ind = Ind
 
@@ -21,7 +22,7 @@ class multiSS:
             targets_del,
             revisit,
             revisit_fun,
-            fill_d,
+            #fill_d,
         )
 
         # index of stars
