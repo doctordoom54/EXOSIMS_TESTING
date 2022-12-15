@@ -9,7 +9,7 @@ import numpy as np
 import EXOSIMS, EXOSIMS.MissionSim, os.path
 
 scriptfile = os.path.join(
-    EXOSIMS.__path__[0], "Scripts", "sampleScript_occulter.json"
+    EXOSIMS.__path__[0], "Scripts", "sampleScript_occulter_brown.json"
 )
 sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
 from helpfun import (
@@ -99,9 +99,7 @@ while tc < len(tf):
 
             # getting the next two steps from lowest cost element
             steps = np.unravel_index(B.argmin(), B.shape)
-            ko = np.prod(
-                koMap[steps[0], tc.item() : intime.item(steps[0])]
-            ) * np.prod(
+            ko = np.prod(koMap[steps[0], tc.item() : intime.item(steps[0])]) * np.prod(
                 koMap[
                     steps[1],
                     tc.item() + intime.item(steps[0]) : intime.item(steps[1]),
@@ -113,11 +111,7 @@ while tc < len(tf):
             order = np.reshape(np.array([A_i, steps[0], steps[1]]), (1, 3))
 
         tc = (
-            tc
-            + intime[steps[0]]
-            + intime[steps[1]]
-            + slew[steps[0]]
-            + slew[steps[1]]
+            tc + intime[steps[0]] + intime[steps[1]] + slew[steps[0]] + slew[steps[1]]
         )  # adding integration time to current time
 
         # create a null matrix for keeping tab of number of observations done
@@ -132,7 +126,7 @@ while tc < len(tf):
             + revisit(len(sInds), Null, steps[1])
         )
         x, y = np.meshgrid(revisit_0, revisit_0)
-        revisit_tab = x * y
+        revisit_tab = x + y
         i = i + 1
 
     else:
@@ -162,9 +156,7 @@ while tc < len(tf):
             # getting the next two steps from lowest cost element
             step = np.unravel_index(C.argmin(), C.shape)
             step = np.asarray(step)
-            ko2 = np.prod(
-                koMap[step[0], tc.item() : intime.item(step[0])]
-            ) * np.prod(
+            ko2 = np.prod(koMap[step[0], tc.item() : intime.item(step[0])]) * np.prod(
                 koMap[
                     step[1],
                     tc.item() + intime.item(step[0]) : intime.item(step[1]),
@@ -184,9 +176,7 @@ while tc < len(tf):
                     + slew[step[0]]
                     + slew[step[1]]
                 )
-                revisit_tab = revisit_fun(
-                    revisit_tab, step[0], step[1], len(sInds)
-                )
+                revisit_tab = revisit_fun(revisit_tab, step[0], step[1], len(sInds))
             ko2 = 0
             print(tc)
 

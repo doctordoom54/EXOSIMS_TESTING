@@ -11,7 +11,7 @@ class multiSS:
         import EXOSIMS, EXOSIMS.MissionSim, os.path
 
         scriptfile = os.path.join(
-            EXOSIMS.__path__[0], "Scripts", "sampleScript_occulter.json"
+            EXOSIMS.__path__[0], "Scripts", "sampleScript_occulter_brown.json"
         )
         sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
         from helpfun import (
