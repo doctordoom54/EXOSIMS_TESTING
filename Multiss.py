@@ -126,7 +126,7 @@ def multiss(Ind):
                 + revisit(len(sInds), Null, steps[1])
             )
             x, y = np.meshgrid(revisit_0, revisit_0)
-            revisit_tab = x * y
+            revisit_tab = x + y
             i = i + 1
 
         else:
