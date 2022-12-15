@@ -35,7 +35,7 @@ comp = np.random.rand(len(sInds), 1)
 u = np.random.uniform(low=5, high=13.3, size=(len(sInds), 3))
 
 # define random integration time
-intime = np.random.randint(6, high=50, size=(len(sInds), 1))
+intime = np.random.randint(6, high=45, size=(len(sInds), 1))
 
 # generate random slew times
 slew = np.random.randint(5, high=25, size=(len(sInds), 1))
