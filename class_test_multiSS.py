@@ -1,5 +1,4 @@
 class multiSS:
-    
     def __init__(self, Ind):
         self.Ind = Ind
 
@@ -22,7 +21,7 @@ class multiSS:
             targets_del,
             revisit,
             revisit_fun,
-            #fill_d,
+            # fill_d,
         )
 
         # index of stars
@@ -130,7 +129,7 @@ class multiSS:
                     + revisit(len(sInds), Null, steps[1])
                 )
                 x, y = np.meshgrid(revisit_0, revisit_0)
-                revisit_tab = x * y
+                revisit_tab = x + y
                 i = i + 1
 
             else:
