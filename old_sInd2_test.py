@@ -4,15 +4,17 @@ A = np.arange(100)
 sInd = None
 old_sInd = None
 i = 0
-s = [None, None]
+last2Targets = [None, None]
+starVisits = np.zeros(len(A))
 
-while i < 5:
-    s = [old_sInd, sInd]
+while i < len(A):
+    last2Targets = [old_sInd, sInd]
     old_sInd = sInd
     sInd = np.random.choice(A)
     print("current choice is", sInd)
     print("current choice is", old_sInd)
-    print(s)
+    starVisits[sInd] += 1
+    print(last2Targets)
     i = i + 1
 
 
@@ -21,5 +23,5 @@ def test(old_sInd, sInd):
     return p
 
 
-t = test(s[1], 0)
+t = test(last2Targets[1], 0)
 print(t)
