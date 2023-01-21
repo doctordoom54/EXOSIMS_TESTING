@@ -11,10 +11,10 @@ while i < len(A):
     last2Targets = [old_sInd, sInd]
     old_sInd = sInd
     sInd = np.random.choice(A)
-    print("current choice is", sInd)
-    print("current choice is", old_sInd)
+    print("current target is", sInd)
+    print("last target was", old_sInd)
     starVisits[sInd] += 1
-    print(last2Targets)
+    print("last 2 targets were", last2Targets)
     i = i + 1
 
 

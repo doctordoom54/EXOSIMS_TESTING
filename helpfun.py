@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Nov 12 13:32:51 2022
-
-@author: sachin kelkar
-"""
-
 import numpy as np
 
 # kill the diagonal of matrix with arbritary value
