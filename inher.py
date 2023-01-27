@@ -6,7 +6,8 @@ class test(object):
         
     def add(self,c,d):
         e = self.a+self.b
-        return e
+        g =self.c*self.d
+        return e,g
     
 class test2(test):
     
@@ -17,7 +18,6 @@ class test2(test):
     def addin(self):
         u = self.f+self.b
         return u
-
 
 y = test2(1,1,2)
 y.addin()
