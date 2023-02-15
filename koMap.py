@@ -1,4 +1,5 @@
 import numpy as np
+from add import TMT
 
 i = 0
 a = np.random.randint(10, size=(5, 5))
@@ -18,3 +19,6 @@ while A == 1:
         print(counter)
         print("test t,y")
         A = 1
+
+r = TMT(4,3,5)
+p = TMT(5,4,7)

@@ -31,5 +31,16 @@ def matrix_calc(A,A_i):
     A[A_i,:] = np.inf
     
     return None
+
+def TMT(a,b,c):
+    if a == 1:
+        print("a = 1")
+    if a == 0:
+        print("a = 0")
+    print(np.pi*b)
+    print(np.e*c)
+   
+        
+    return b+c
     
     
