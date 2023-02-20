@@ -44,7 +44,7 @@ def TMT(a,b,c):
     return b+c
 
 def shubham(a,b):
-    d = a*b
-    return d
+    e = a*b
+    return e
     
     
