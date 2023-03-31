@@ -1,0 +1,4 @@
+np.all()
+boolean operation
+product operators check
+dynamic profilers 
