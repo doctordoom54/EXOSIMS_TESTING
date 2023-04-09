@@ -2,8 +2,8 @@ import EXOSIMS,EXOSIMS.MissionSim,os.path
 import pandas as pd 
 import astropy.units as u
 import matplotlib.pyplot as plt
-from astropy.coordinates import SkyCoord
 import numpy as np
+
 scriptfile = os.path.join(EXOSIMS.__path__[0],'Scripts','multiOcculterScript_test.json')
 sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
 
@@ -21,13 +21,22 @@ for i in range(0,len(DRM)):
 
 r = b[:,0]
 d = b[:,1]
+
+r_1 = b[0::2,0]
+d_1 = b[0::2,1]
+
+r_2 = b[1::2,0]
+d_2 = b[1::2,1]
+
+
 #plot the schedule
 plt.figure()
 plt.subplot(111, projection="aitoff")
 plt.grid(True)
-plt.title("Aitoff projection of our greedy schedule")
-plt.scatter(r,d)
-plt.plot(r,d)
+plt.scatter(r_1,d_1)
+plt.plot(r_1,d_1)
+plt.scatter(r_2,d_2)
+plt.plot(r_2,d_2)
 plt.show()
 
 
