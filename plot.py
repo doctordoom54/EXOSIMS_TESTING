@@ -19,12 +19,23 @@ for i in range(0,len(DRM)):
     b[i,0] = sim.TargetList.coords[sim.SurveySimulation.DRM[i]['star_ind']].ra.wrap_at(180 * u.deg).radian
     b[i,1] = sim.TargetList.coords[sim.SurveySimulation.DRM[i]['star_ind']].dec.radian
 
-r = b[:,0]
-d = b[:,1]
 
+#extracting coordinates of all targets
+
+a = np.zeros((len(sim.TargetList.coords),2))
+
+for p in range(0,len(sim.TargetList.coords)):
+    a[p,0] = sim.TargetList.coords[p].ra.wrap_at(180 * u.deg).radian
+    a[p,1] = sim.TargetList.coords[p].dec.radian
+
+R = a[:,0]
+D = a[:,1]
+
+#targets from 1st Starshade
 r_1 = b[0::2,0]
 d_1 = b[0::2,1]
 
+#targets from 2nd Starshade
 r_2 = b[1::2,0]
 d_2 = b[1::2,1]
 
