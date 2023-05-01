@@ -8,7 +8,7 @@ scriptfile = os.path.join(EXOSIMS.__path__[0],'Scripts','multiOcculterScript_tes
 sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
 
 #read pickle file
-DRM = pd.read_pickle(r'DRM.pkl')
+DRM = pd.read_pickle(r'DRM_newsim.pkl')
 
 sim.SurveySimulation.DRM = DRM
 #create an empty array
@@ -39,6 +39,28 @@ d_1 = b[0::2,1]
 r_2 = b[1::2,0]
 d_2 = b[1::2,1]
 
+#checking if scheduler selects observable targets
+
+koMap = sim.SurveySimulation.koMaps['occulter_1'].astype(int)
+q = 0
+for j in range(0,len(DRM)):
+    #start time of observation (normalized)
+    st = np.int64(DRM[j]['arrival_time'].value)
+    #end time of observation (normalized)
+    et =st + np.int64(DRM[j]['det_time'].value)
+    #ind
+    ind = DRM[j]['star_ind']
+    if q==0:
+        slew = int(DRM[j]['slew_time_1'].value)
+        q = 1
+    else:
+        slew = int(DRM[j]['slew_time_2'].value)
+        q = 0
+    count  = np.all(koMap[ind,st:et])
+    if count == 0:
+        print("star with ind" ,j ,"is not observable but observed??")
+
+
 
 #plot the schedule
 plt.figure()
@@ -49,6 +71,3 @@ plt.plot(r_1,d_1)
 plt.scatter(r_2,d_2)
 plt.plot(r_2,d_2)
 plt.show()
-
-
-
