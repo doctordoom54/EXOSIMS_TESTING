@@ -8,12 +8,22 @@ scriptfile = os.path.join(EXOSIMS.__path__[0],'Scripts','multiOcculterScript_tes
 sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
 
 #read pickle file
-DRM = pd.read_pickle(r'DRM_newsim.pkl')
+DRM = pd.read_pickle(r'DRM_newsim2.pkl')
 
 sim.SurveySimulation.DRM = DRM
 #create an empty array
 b = np.zeros((len(DRM),2))
 
+ind = np.zeros(len(DRM))
+comp = np.zeros(len(ind))
+
+#extracting index
+for i in range(0,len(DRM)):
+    ind[i] = sim.SurveySimulation.DRM[i]['star_ind']
+
+#extracting completeness 
+for i in range(0,len(DRM)):
+    comp[i] = sim.TargetList.int_comp[int(ind[i])]
 
 for i in range(0,len(DRM)):
     b[i,0] = sim.TargetList.coords[sim.SurveySimulation.DRM[i]['star_ind']].ra.wrap_at(180 * u.deg).radian
@@ -66,8 +76,9 @@ for j in range(0,len(DRM)):
 plt.figure()
 plt.subplot(111, projection="aitoff")
 plt.grid(True)
-plt.scatter(r_1,d_1)
+plt.scatter(r_1,d_1,c = comp[0::2])
 plt.plot(r_1,d_1)
-plt.scatter(r_2,d_2)
+plt.scatter(r_2,d_2, c = comp[1::2])
 plt.plot(r_2,d_2)
+plt.colorbar(label='Completeness')
 plt.show()
