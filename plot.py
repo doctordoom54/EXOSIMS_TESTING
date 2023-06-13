@@ -10,7 +10,7 @@ scriptfile = os.path.join(
 sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
 
 # read pickle file
-DRM = pd.read_pickle(r"DRM1June.pkl")
+DRM = pd.read_pickle(r"DRM13June1.pkl")
 
 sim.SurveySimulation.DRM = DRM
 # create an empty array
@@ -61,7 +61,12 @@ for i in range(len(sim.TargetList.coords)):
        r_new.append(R[i])
        d_new.append(D[i]) 
 
+sInd = np.array([])
+for j in range(0,len(DRM)):
+    q = DRM[j]['star_ind']
+    sInd = np.append(sInd,q)
 
+print(len(np.unique(sInd)))
 
 
 
@@ -78,7 +83,7 @@ d_2 = b[1::2, 1]
 
 q = 0
 
-for j in range(0, len(DRM)):
+"""for j in range(0, len(DRM)):
     # start time of observation (normalized)
     st = np.int64(DRM[j]["arrival_time"].value)
     # end time of observation (normalized)
@@ -93,13 +98,16 @@ for j in range(0, len(DRM)):
         q = 0
     count = np.all(koMap[ind, st:et])
     if count == 0:
-        print("star with ind", j, "is not observable but observed??")
+        print("star with ind", j, "is not observable but observed??")"""
 
 #checking observable stars with keepout map:
 
-
-
-
+for i in range(0,len(DRM)):
+    if i%2 == 0:
+        print(DRM[i]['slew_time_1'])
+    else:
+        print(DRM[i]['slew_time_2'])
+        
 # plot the schedule
 plt.figure()
 plt.subplot(111, projection="mollweide")
