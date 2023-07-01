@@ -10,7 +10,7 @@ scriptfile = os.path.join(
 sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
 
 # read pickle file
-DRM = pd.read_pickle(r"DRM13June1.pkl")
+DRM = pd.read_pickle(r"DRM1July2.pkl")
 
 sim.SurveySimulation.DRM = DRM
 # create an empty array
@@ -68,6 +68,11 @@ for j in range(0,len(DRM)):
 
 print(len(np.unique(sInd)))
 
+det =[]
+for j in range(0,len(DRM)):
+    q = np.count_nonzero(DRM[j]['det_status']==1)
+    det = np.append(det,q)
+print(np.sum(det))
 
 
 # targets from 1st Starshade
