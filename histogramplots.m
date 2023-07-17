@@ -59,18 +59,26 @@ dets_3y = [18, 24, 25, 25, 18, 17, 21, 22, 18, 22, 23, 18, 31, 16, 22, 14, 19,..
        18, 12, 27, 20, 22, 20, 24, 17, 22, 27, 18, 31, 25, 27, 20, 16, 22,...
        20, 21, 22, 25, 17, 22, 18, 18, 21, 27, 27, 18, 25, 20, 24, 38, 26,...
        13, 19, 25, 16, 27, 19, 22, 18, 21, 23, 16];
-
-de = histfit(dets_3y,10);
-legend('Deterministic Scheduler for 3Y mission','Normal Curve, \mu = 21, \sigma = 5.1', fontsize = 10)
-%%
-h = histfit(dets,10);
+figure()
+ax = gca;
+de = histfit(dets_3y,15);
+legend('Deterministic Scheduler for 3Y mission','Normal Curve, \mu = 21, \sigma = 5.1', fontsize = 15)
+title('Histogram plot for number of Detection', 'Interpreter','latex', FontSize=15,FontWeight = 'bold')
+xlabel('Number of unique planet detections', 'Interpreter','latex',FontSize=15,FontWeight = 'bold')
+ylabel('Frequency of Occurance','Interpreter','latex',FontSize=15,FontWeight = 'bold')
+ax.FontSize = 14;
+hold on
+figure()
+ax1 = gca;
+h = histfit(dets,15);
 h(1).FaceColor = 'Yellow';
 h(2).Color = [.2 .2 .2];
 hold on
-H = histfit(dets1,10);
+H = histfit(dets1,15);
 H(1).FaceColor = 'red';
 H(2).Color = 'blue';
-legend('Deterministic Scheduler','Normal Curve, \mu = 24.7, \sigma = 5.3','Random Walk Scheduler', 'Normal Curve, \mu = 5.6, \sigma = 2.5', fontsize = 10)
-title('Histogram plot for number of Detection', 'Interpreter','latex', FontSize=13)
-xlabel('Number of unique planet detections', 'Interpreter','latex',FontSize=13)
-ylabel('Frequency of Occurance','Interpreter','latex',FontSize=13)
+legend('Deterministic Scheduler','Normal Curve, \mu = 24.7, \sigma = 5.3','Random Walk Scheduler', 'Normal Curve, \mu = 5.6, \sigma = 2.5', fontsize = 15,FontWeight = 'bold')
+title('Histogram plot for number of Detection', 'Interpreter','latex', FontSize=15,FontWeight = 'bold')
+xlabel('Number of unique planet detections', 'Interpreter','latex',FontSize=15,FontWeight = 'bold')
+ylabel('Frequency of Occurance','Interpreter','latex',FontSize=15,FontWeight = 'bold')
+ax1.FontSize = 14;

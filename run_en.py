@@ -1,6 +1,6 @@
 import EXOSIMS,EXOSIMS.MissionSim,os.path
 import numpy as np
-scriptfile = os.path.join(EXOSIMS.__path__[0],'Scripts','TwoStarshadeThreeYears.json')
+scriptfile = os.path.join(EXOSIMS.__path__[0],'Scripts','multiOcculterScript_test.json')
 sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
 data = sim.run_ensemble(300)
 
