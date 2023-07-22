@@ -10,7 +10,7 @@ scriptfile = os.path.join(
 sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
 
 # read pickle file
-DRM = pd.read_pickle(r"July17.pkl")
+DRM = pd.read_pickle(r"seed20Jul25425454.pkl")
 
 sim.SurveySimulation.DRM = DRM
 # create an empty array

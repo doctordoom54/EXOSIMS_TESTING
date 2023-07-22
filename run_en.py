@@ -1,6 +1,6 @@
 import EXOSIMS,EXOSIMS.MissionSim,os.path
 import numpy as np
-scriptfile = os.path.join(EXOSIMS.__path__[0],'Scripts','multiOcculterScript_test.json')
+scriptfile = os.path.join(EXOSIMS.__path__[0],'Scripts','TwoStarshadeThreeYears.json')
 sim = EXOSIMS.MissionSim.MissionSim(scriptfile)
 data = sim.run_ensemble(300)
 
@@ -14,4 +14,4 @@ for i in range(0,len(data)):
     s = np.sum(det)
     dets = np.append(dets,s)
     s = 0
-    det = []
+    det = []    

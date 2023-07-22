@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-data = pd.read_pickle(r"July17.pkl")
+data = pd.read_pickle(r"3Y-Proto-300runs.pkl")
 # code to calculate distibution of planet detection and so on..
 det = []
 dets = np.zeros((0,len(data)))
@@ -12,3 +12,4 @@ for i in range(0,len(data)):
     dets = np.append(dets,s)
     s = 0
     det = []
+dets.astype(int)
